@@ -1,6 +1,17 @@
-*.class
+# Eclipse project files
+.classpath
+.project
+.settings/
 
-# Package Files #
-*.jar
-*.war
-*.ear
+
+# Intellij project files
+*.iml
+.idea/
+
+# Others
+target/
+logs/
+/examples/showcase/bin/yuicompressor-2.4.*.jar
+/support/jmeter/*.jtl
+/support/jmeter/*.log
+/support/local-script/
