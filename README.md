@@ -1,4 +1,4 @@
-weblogic_dscq
+weblogic项目的定时重启程序
 =============
 
-weblogic的定时重启
+内置Quartz作为任务调度框架,实现对各个通过Weblogic作为中间件的项目进行启动,关闭,重启等功能.
