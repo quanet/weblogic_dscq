@@ -25,7 +25,11 @@
     <!-- JSR303 Validator定义 -->
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
-    <!-- .业务处理部分 -->
+
+    <!-- ========================================= 业务处理部分 ================================================= -->
+
+    <!-- 本地部署的Scheduler -->
+    <bean id="localQuartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"></bean>
 
 
 </beans>
