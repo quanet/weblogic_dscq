@@ -8,5 +8,6 @@
     <artifactId>restarter</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <description>定时控制模块</description>
 
 </project>
