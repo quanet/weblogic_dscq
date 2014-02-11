@@ -15,6 +15,3 @@ logs/
 /support/jmeter/*.jtl
 /support/jmeter/*.log
 /support/local-script/
-
-
-/restarter/basic/WEB-INF/lib/*.jar
