@@ -21,7 +21,7 @@ public class TaskHandler {
         try {
             //批处理文件路径
             String filePath = Thread.currentThread()
-                    .getContextClassLoader().getResource("").getPath()+"batfiles/";
+                    .getContextClassLoader().getResource("").getPath();
             String g = "";
             command=filePath+command;
 

@@ -6,7 +6,7 @@ import java.io.IOException;
 public class TestDemo {
 
     private static final String filePath
-            = "F:\\projects\\Weblogic定时控制程序\\weblogic_dscq\\restarter\\src\\main\\resources\\batfiles\\";
+            = "F:\\projects\\Weblogic定时控制程序\\weblogic_dscq\\restarter\\src\\main\\resources\\";
 
     public static String execCommand(String command){
         String errorMSG = "";
@@ -43,8 +43,8 @@ public class TestDemo {
     public static void main(String[] args) throws Exception{
         //execCommand("hook.bat");
 
-        execCommand("shutdownHook.bat");
-        Thread.sleep(30000);
-        execCommand("startupHook.bat");
+        execCommand("shutdown.bat");
+        Thread.sleep(10000);
+        execCommand("startup.bat");
     }
 }
