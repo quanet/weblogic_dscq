@@ -57,7 +57,6 @@ public class TaskHandler {
      * 重启
      */
     public void restart() throws Exception {
-        //kkkkkkk
         logger.info("重启weblogic应用");
         execCommand("shutdown.bat");
         Thread.sleep(20000);
