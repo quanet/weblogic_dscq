@@ -40,7 +40,7 @@ public class TaskHandler {
      */
     public void start() {
         logger.info("启动weblogic应用");
-        execCommand("startupHook.bat");
+        execCommand("startup.bat");
     }
 
 
@@ -49,7 +49,7 @@ public class TaskHandler {
      */
     public void stop() {
         logger.info("停止weblogic应用");
-        execCommand("shutdownHook.bat");
+        execCommand("shutdown.bat");
     }
 
 
@@ -58,8 +58,8 @@ public class TaskHandler {
      */
     public void restart() throws Exception {
         logger.info("重启weblogic应用");
-        execCommand("shutdownHook.bat");
+        execCommand("shutdown.bat");
         Thread.sleep(20000);
-        execCommand("startupHook.bat");
+        execCommand("startup.bat");
     }
 }
