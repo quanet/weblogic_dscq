@@ -22,14 +22,17 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!-- JSR303 Validator定义 -->
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-
-
     <!-- ========================================= 业务处理部分 ================================================= -->
 
     <!-- 本地部署的Scheduler -->
-    <bean id="localQuartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"></bean>
+    <!-- bean id="localQuartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"></bean -->
 
+    <!-- coding 方式的加強版 -->
+    <!-- .上下文启动的时候，自动处理 -->
+    <bean id="springCronJob" class="cn.com.scheduler.job.ServerCronJob" lazy-init="false">
+        <property name="cronExpression" value="0 0/5 9-17 * * MON-FRI"/>
+        <!-- property name="cronExpression" value="0 0 14 * * ?"/ -->
+        <property name="shutdownTimeout" value="20" />
+    </bean>
 
 </beans>
