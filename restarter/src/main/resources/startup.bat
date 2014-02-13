@@ -3,9 +3,6 @@
   SET ROOT=%~dp0
   SET CONFIG_FILE=%ROOT%project.ini
 
-  FOR /F "tokens=1,2 delims==" %%i in (%CONFIG_FILE%) DO (
-     SET %%i=%%j
-  )
-
-  start %project_domain_path%\startWebLogic.cmd
-
+   for /f "tokens=1,2 delims=^=" %%a in (%CONFIG_FILE%) do (
+   start %%b\startWebLogic.cmd
+   )
