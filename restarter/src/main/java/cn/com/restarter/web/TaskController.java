@@ -50,7 +50,7 @@ public class TaskController {
      */
     @RequestMapping("/downloadlog.action")
     public String downloadlog(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String url = "D:\\weblogic10.3.5\\user_projects\\domains\\weblogic_dscq\\.logs" ;
+        String url = "C:/restartlog" ;
         FileUtils.downLoadFilesByUrl(request,response,url);
         return null;
     }
