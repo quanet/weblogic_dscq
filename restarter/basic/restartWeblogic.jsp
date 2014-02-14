@@ -12,12 +12,21 @@
     }
 %>
 <input name="restart" id="restart" type="button" value="重启" onclick="restart();">
-<input name="restart" id="restart" type="button" value="下载日志文件" onclick="">
+<input name="restart" id="restart" type="button" value="下载本应用日志文件" onclick="downloadlog();">
+<input name="restart" id="restart" type="button" value="下载所配置应用日志文件" onclick="downloadlog1();">
 </body>
 <script>
     function restart() {
         document.getElementById("restart").disabled = true;
         window.location.href = "/basic/web/task/restart.action";
+    }
+
+    function downloadlog() {
+        window.location.href = "/basic/web/task/downloadlog.action";
+    }
+
+    function downloadlog1() {
+        window.location.href = "/basic/web/task/downloadlog1.action";
     }
 </script>
 </html>
