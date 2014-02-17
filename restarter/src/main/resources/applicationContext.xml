@@ -30,8 +30,8 @@
     <!-- coding 方式的加強版 -->
     <!-- .上下文启动的时候，自动处理 -->
     <bean id="springCronJob" class="cn.com.scheduler.job.ServerCronJob" lazy-init="false">
-        <property name="cronExpression" value="0 0/5 9-17 * * MON-FRI"/>
-        <!-- property name="cronExpression" value="0 0 14 * * ?"/ -->
+        <!-- property name="cronExpression" value="0 0/5 9-17 * * MON-FRI"/ -->
+        <property name="cronExpression" value="0 0 3 * * ?"/>
         <property name="shutdownTimeout" value="20" />
     </bean>
 
