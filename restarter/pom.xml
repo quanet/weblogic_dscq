@@ -25,6 +25,7 @@
         <cxf.version>2.7.6</cxf.version>
         <httpclient.version>4.3.2</httpclient.version>
         <commons-io.version>2.4</commons-io.version>
+        <jetty.version>7.6.13.v20130916</jetty.version>
     </properties>
 
     <!--======================================= 第三方依赖包 =============================================-->
@@ -138,10 +139,6 @@
             <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
-
-
-
-
         <dependency>
             <groupId>com.googlecode.log4jdbc</groupId>
             <artifactId>log4jdbc</artifactId>
@@ -234,6 +231,19 @@
             <version>${quartz.version}</version>
         </dependency>
 
+        <!-- Jetty -->
+        <dependency>
+            <groupId>org.eclipse.jetty.aggregate</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jsp</artifactId>
+            <version>${jetty.version}</version>
+            <scope>test</scope>
+        </dependency>
 
 
 
