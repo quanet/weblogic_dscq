@@ -14,15 +14,14 @@ import java.util.zip.ZipOutputStream;
 public class FileUtils {
 
     //单路径文件打包下载
-    public static HttpServletResponse downLoadFilesByUrl(HttpServletRequest request, HttpServletResponse response,String url,String zipname) throws Exception {
+    public static HttpServletResponse downLoadFilesByUrl(HttpServletRequest request, HttpServletResponse response, String url, String zipname) throws Exception {
         List<File> files = new ArrayList<File>();
-        File file=new File(url);
-        File[] files1=file.listFiles();
-        for(int i=0;i<files1.length;i++)
-        {
+        File file = new File(url);
+        File[] files1 = file.listFiles();
+        for (int i = 0; i < files1.length; i++) {
             files.add(files1[i]);
         }
-        return  downLoadFiles(files,zipname,request,response);
+        return downLoadFiles(files, zipname, request, response);
     }
 
     //文件打包下载
@@ -37,8 +36,8 @@ public class FileUtils {
             /**创建一个临时压缩文件，
              * 我们会把文件流全部注入到这个文件中
              * 这里的文件你可以自定义是.rar还是.zip*/
-            File file = new File("c:/"+zipname);
-            if (!file.exists()){
+            File file = new File("c:/" + zipname);
+            if (!file.exists()) {
                 file.createNewFile();
             }
             response.reset();
@@ -54,8 +53,8 @@ public class FileUtils {
             zipFile(files, zipOut);
             zipOut.close();
             fous.close();
-            return downloadZip(file,response);
-        }catch (Exception e) {
+            return downloadZip(file, response);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         /**直到文件的打包已经成功了，
@@ -64,22 +63,22 @@ public class FileUtils {
         // OutputStream out = response.getOutputStream();
 
 
-        return response ;
+        return response;
     }
 
     /**
      * 把接受的全部文件打成压缩包
      */
     public static void zipFile
-    (List files,ZipOutputStream outputStream) {
+    (List files, ZipOutputStream outputStream) {
         int size = files.size();
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             File file = (File) files.get(i);
             zipFile(file, outputStream);
         }
     }
 
-    public static HttpServletResponse downloadZip(File file,HttpServletResponse response) {
+    public static HttpServletResponse downloadZip(File file, HttpServletResponse response) {
         try {
             // 以流的形式下载文件。
             InputStream fis = new BufferedInputStream(new FileInputStream(file.getPath()));
@@ -97,7 +96,7 @@ public class FileUtils {
             toClient.close();
         } catch (IOException ex) {
             ex.printStackTrace();
-        }finally{
+        } finally {
             try {
                 File f = new File(file.getPath());
                 f.delete();
@@ -110,13 +109,11 @@ public class FileUtils {
 
     /**
      * 根据输入的文件与输出流对文件进行打包
-     * @param File
-     * @param org.apache.tools.zip.ZipOutputStream
      */
     public static void zipFile(File inputFile,
                                ZipOutputStream ouputStream) {
         try {
-            if(inputFile.exists()) {
+            if (inputFile.exists()) {
                 /**如果是目录的话这里是不采取操作的，
                  * 至于目录的打包正在研究中*/
                 if (inputFile.isFile()) {
