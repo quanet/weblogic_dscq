@@ -27,7 +27,6 @@
     }
 
     function downloadlog1() {
-
         for(var i=0;i<<%=TaskController.getCount()%>;i++){
             window.open("/basic/web/task/downloadlog1.action?count="+i);
         }
