@@ -7,7 +7,7 @@ set MAVEN_OPTS=%MAVEN_OPTS% -XX:MaxPermSize=128m
 cd WEB-INF
 cd classes
 
-java RunServer
+java RunJettyServer
 
 :end
 pause
