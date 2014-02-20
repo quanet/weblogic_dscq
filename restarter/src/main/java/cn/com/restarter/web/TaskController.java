@@ -50,8 +50,8 @@ public class TaskController {
      */
     @RequestMapping("/downloadlog.action")
     public String downloadlog(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String url = "C:/restartlog" ;
-        FileUtils.downLoadFilesByUrl(request,response,url);
+        String url = "C:/restartlog";
+        FileUtils.downLoadFilesByUrl(request, response, url);
         return null;
     }
 
@@ -61,12 +61,17 @@ public class TaskController {
      * @return
      */
     @RequestMapping("/downloadlog1.action")
-    public String downloadlog1(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void downloadlog1(HttpServletRequest request, HttpServletResponse response, int count) throws Exception {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
                 .getContextClassLoader().getResource("").getPath() + "project.ini");
-        for(int i =0;i<listStr.size();i++){
-            FileUtils.downLoadFilesByUrl(request,response,listStr.get(i)+"\\servers\\AdminServer\\logs");
-        }
-        return null;
+
+        FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "\\servers\\AdminServer\\logs");
+    }
+
+    //获取项目数量
+    public static int getCount() {
+        List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
+                .getContextClassLoader().getResource("").getPath() + "project.ini");
+        return listStr.size();
     }
 }

@@ -12,8 +12,8 @@ import java.util.zip.ZipOutputStream;
  * Created by zhengjianwen on 14-2-14.
  */
 public class FileUtils {
-    //文件打包下载
-    public static HttpServletResponse downLoadFilesByUrl(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
+    //多路径文件打包下载
+    public static HttpServletResponse downLoadFilesByUrl1(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
         List<File> files = new ArrayList<File>();
         File file=new File(url);
         File[] files1=file.listFiles();
@@ -22,6 +22,18 @@ public class FileUtils {
             files.add(files1[i]);
         }
          return  downLoadFiles(files,request,response);
+    }
+
+    //单路径文件打包下载
+    public static HttpServletResponse downLoadFilesByUrl(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
+        List<File> files = new ArrayList<File>();
+        File file=new File(url);
+        File[] files1=file.listFiles();
+        for(int i=0;i<files1.length;i++)
+        {
+            files.add(files1[i]);
+        }
+        return  downLoadFiles(files,request,response);
     }
 
     //文件打包下载

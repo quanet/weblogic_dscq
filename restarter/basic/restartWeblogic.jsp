@@ -1,3 +1,4 @@
+<%@ page import="cn.com.restarter.web.TaskController" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -26,7 +27,9 @@
     }
 
     function downloadlog1() {
-        window.location.href = "/basic/web/task/downloadlog1.action";
+        for(var i=0;i<<%=TaskController.getCount()%>;i++){
+            window.open("/basic/web/task/downloadlog1.action?count="+i);
+        }
     }
 </script>
 </html>
