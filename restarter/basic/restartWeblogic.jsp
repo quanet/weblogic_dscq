@@ -18,8 +18,13 @@
 </body>
 <script>
     function restart() {
-        document.getElementById("restart").disabled = true;
-        window.location.href = "/basic/web/task/restart.action";
+        var count =   <%=TaskController.getCount()%>;
+        if (count == 0) {
+            alert("还没有配置任何应用，请配置！");
+        } else {
+            document.getElementById("restart").disabled = true;
+            window.location.href = "/basic/web/task/restart.action";
+        }
     }
 
     function downloadlog() {
@@ -27,10 +32,15 @@
     }
 
     function downloadlog1() {
-
-        for(var i=0;i<<%=TaskController.getCount()%>;i++){
-            window.open("/basic/web/task/downloadlog1.action?count="+i);
+        var count =   <%=TaskController.getCount()%>;
+        if (count == 0) {
+            alert("还没有配置任何应用，请配置！");
+        } else {
+            for (var i = 0; i < count; i++) {
+                window.open("/basic/web/task/downloadlog1.action?count=" + i);
+            }
         }
+
     }
 </script>
 </html>

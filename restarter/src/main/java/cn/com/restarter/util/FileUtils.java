@@ -12,20 +12,9 @@ import java.util.zip.ZipOutputStream;
  * Created by zhengjianwen on 14-2-14.
  */
 public class FileUtils {
-    //多路径文件打包下载
-    public static HttpServletResponse downLoadFilesByUrl1(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
-        List<File> files = new ArrayList<File>();
-        File file=new File(url);
-        File[] files1=file.listFiles();
-        for(int i=0;i<files1.length;i++)
-        {
-            files.add(files1[i]);
-        }
-         return  downLoadFiles(files,request,response);
-    }
 
     //单路径文件打包下载
-    public static HttpServletResponse downLoadFilesByUrl(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
+    public static HttpServletResponse downLoadFilesByUrl(HttpServletRequest request, HttpServletResponse response,String url,String zipname) throws Exception {
         List<File> files = new ArrayList<File>();
         File file=new File(url);
         File[] files1=file.listFiles();
@@ -33,11 +22,11 @@ public class FileUtils {
         {
             files.add(files1[i]);
         }
-        return  downLoadFiles(files,request,response);
+        return  downLoadFiles(files,zipname,request,response);
     }
 
     //文件打包下载
-    public static HttpServletResponse downLoadFiles(List<File> files,
+    public static HttpServletResponse downLoadFiles(List<File> files, String zipname,
                                                     HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         try {
@@ -48,7 +37,7 @@ public class FileUtils {
             /**创建一个临时压缩文件，
              * 我们会把文件流全部注入到这个文件中
              * 这里的文件你可以自定义是.rar还是.zip*/
-            File file = new File("c:/logs.zip");
+            File file = new File("c:/"+zipname);
             if (!file.exists()){
                 file.createNewFile();
             }
@@ -80,8 +69,6 @@ public class FileUtils {
 
     /**
      * 把接受的全部文件打成压缩包
-     * @param List<File>;
-     * @param org.apache.tools.zip.ZipOutputStream
      */
     public static void zipFile
     (List files,ZipOutputStream outputStream) {
