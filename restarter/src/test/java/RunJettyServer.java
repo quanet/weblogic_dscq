@@ -25,7 +25,7 @@ public class RunJettyServer {
 
             server.start();
             System.out.println(" http://localhost:" + PORT + CONTEXT+"/restartWeblogic.jsp");
-            System.out.println("1111111111");
+            System.out.println("输入回车将会重启本应用");
 
             while(true) {
                 char c = (char) System.in.read();
