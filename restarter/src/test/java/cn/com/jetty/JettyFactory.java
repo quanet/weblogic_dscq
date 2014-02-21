@@ -71,6 +71,6 @@ public class JettyFactory {
         classLoader.addClassPath("basic/WEB-INF/classes");//设置编译路径
         context.setClassLoader(classLoader);
         context.start();
-        System.out.println("应用重启完毕... ...");
+        System.out.println("restart success!!");
     }
 }
