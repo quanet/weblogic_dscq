@@ -12,23 +12,21 @@ public class RunJettyServer {
     /**
      * 相关启动参数
      */
-    private static final int PORT = 8080;
-    private static final String CONTEXT = "/basic";
-    private static final String[] TLD_JAR_NAMES = new String[] {"sitemesh", "spring-webmvc"};
-
+    private static final int PORT = 9394;//应用端口
+    private static final String CONTEXT = "/basic";//上下文名称
 
 
     public static void main(String[] args) throws Exception {
 
-        Server server = JettyFactory.createServer(PORT,CONTEXT);
-        JettyFactory.setTldNames(server, TLD_JAR_NAMES);
+        Server server = JettyFactory.createServer(PORT,CONTEXT);//创建服务
+        JettyFactory.setTldNames(server, null);//设置JARS
 
         try {
             //当控制台中输入回车的时候,应用重启
 
             server.start();
-            System.out.println("Jetty Server running at http://localhost:" + PORT + CONTEXT);
-            System.out.println("Hit Enter to reload the application quickly");
+            System.out.println("前台操作可进入 http://localhost:" + PORT + CONTEXT+"/restartWeblogic.jsp");
+            System.out.println("输入回车即可重启本工具");
 
             while(true) {
                 char c = (char) System.in.read();

@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class JettyFactory {
 
-    private static final String DEFAULT_WEBAPP_PATH = "basic";
-    private static final String WINDOWS_WEBDEFAULT_PATH = "jetty/webdefault-windows.xml";
+    private static final String WEB_PATH = "restarter/basic";
+    private static final String WEBDEFAULT_PATH = "restarter/basic/WEB-INF/classes/jetty/webdefault-windows.xml";
 
     /**
      * 创建Jetty的Server
@@ -27,20 +27,18 @@ public class JettyFactory {
     public static Server createServer(int port,String contextPath) {
 
         Server server = new Server();
-        server.setStopAtShutdown(true);
-
+        server.setStopAtShutdown(true);//应用关闭的时候，也把JVM线程杀掉!!!
 
         SelectChannelConnector connector = new SelectChannelConnector();
         connector.setPort(port);
         connector.setReuseAddress(false);
 
         server.setConnectors(new Connector[]{connector});
-
-        WebAppContext webAppContext = new WebAppContext(DEFAULT_WEBAPP_PATH,contextPath);
-        webAppContext.setDefaultsDescriptor(WINDOWS_WEBDEFAULT_PATH);
-
+        WebAppContext webAppContext = new WebAppContext(WEB_PATH,contextPath);
+        //防止Lock住静态文件的问题.
+        webAppContext.setDefaultsDescriptor(WEBDEFAULT_PATH);
+        //进入handler的装配（Jetty是基于Handler的体系结构）
         server.setHandler(webAppContext);
-
         return server;
     }
 
@@ -65,15 +63,14 @@ public class JettyFactory {
      * 用做重启applicationContext
      */
     public static void reloadContext(Server server) throws Exception {
+        //Jetty是基于Handler的体系结构,这里获取对应的handler
         WebAppContext context = (WebAppContext) server.getHandler();
-        System.out.println("[INFO] Application reloading");
         context.stop();
-
+        //修改相关的Jetty的类加载器
         WebAppClassLoader classLoader = new WebAppClassLoader(context);
-        classLoader.addClassPath("basic/WEB-INF/classes");
-        classLoader.addClassPath("basic/WEB-INF/classes");
+        classLoader.addClassPath("basic/WEB-INF/classes");//设置编译路径
         context.setClassLoader(classLoader);
         context.start();
-        System.out.println("[INFO] Application reloaded");
+        System.out.println("应用重启完毕... ...");
     }
 }
