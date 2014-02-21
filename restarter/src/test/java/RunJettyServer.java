@@ -15,11 +15,10 @@ public class RunJettyServer {
     private static final int PORT = 9394;//应用端口
     private static final String CONTEXT = "/basic";//上下文名称
 
-
     public static void main(String[] args) throws Exception {
 
         Server server = JettyFactory.createServer(PORT,CONTEXT);//创建服务
-        JettyFactory.setTldNames(server, null);//设置JARS
+        JettyFactory.setTldNames(server, new String[] {"spring-webmvc"});//设置JARS
 
         try {
             //当控制台中输入回车的时候,应用重启
