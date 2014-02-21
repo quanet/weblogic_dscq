@@ -18,7 +18,7 @@ public class RunJettyServer {
     public static void main(String[] args) throws Exception {
 
         Server server = JettyFactory.createServer(PORT,CONTEXT);//创建服务
-        JettyFactory.setTldNames(server, new String[] {"spring-webmvc"});//设置JARS
+        JettyFactory.setTldNames(server, new String[] {"spring-webmvc"});//设置JARS...
 
         try {
             //当控制台中输入回车的时候,应用重启
