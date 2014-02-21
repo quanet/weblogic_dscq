@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class JettyFactory {
 
-    private static final String WEB_PATH = "restarter/basic";
-    private static final String WEBDEFAULT_PATH = "restarter/basic/WEB-INF/classes/jetty/webdefault-windows.xml";
+    private static final String WEB_PATH = "./basic";
+    private static final String WEBDEFAULT_PATH = "./basic/WEB-INF/classes/jetty/webdefault-windows.xml";
 
     /**
      * 创建Jetty的Server

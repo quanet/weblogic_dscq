@@ -24,8 +24,8 @@ public class RunJettyServer {
             //当控制台中输入回车的时候,应用重启
 
             server.start();
-            System.out.println("前台操作可进入 http://localhost:" + PORT + CONTEXT+"/restartWeblogic.jsp");
-            System.out.println("输入回车即可重启本工具");
+            System.out.println(" http://localhost:" + PORT + CONTEXT+"/restartWeblogic.jsp");
+            System.out.println("1111111111");
 
             while(true) {
                 char c = (char) System.in.read();
