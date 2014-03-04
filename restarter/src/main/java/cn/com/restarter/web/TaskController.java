@@ -63,15 +63,15 @@ public class TaskController {
     @RequestMapping("/downloadlog1.action")
     public void downloadlog1(HttpServletRequest request, HttpServletResponse response, int count) throws Exception {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
-                .getContextClassLoader().getResource("").getPath() + "project.ini");
+                .getContextClassLoader().getResource("").getPath() + "config.properties");
         String url[] = listStr.get(count).split("//");
         FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "\\servers\\AdminServer\\logs",url[url.length-1]+".zip");
     }
 
-    //获取项目数量
+    //获取项目数量+1
     public static int getCount() {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
-                .getContextClassLoader().getResource("").getPath() + "project.ini");
+                .getContextClassLoader().getResource("").getPath() + "config.properties");
         return listStr.size();
     }
 }

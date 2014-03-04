@@ -33,10 +33,10 @@
 
     function downloadlog1() {
         var count =   <%=TaskController.getCount()%>;
-        if (count == 0) {
+        if (count == 1) {
             alert("还没有配置任何应用，请配置！");
         } else {
-            for (var i = 0; i < count; i++) {
+            for (var i = 1; i < count; i++) {
                 window.open("/basic/web/task/downloadlog1.action?count=" + i);
             }
         }

@@ -1,4 +1,5 @@
 import cn.com.jetty.JettyFactory;
+import cn.com.restarter.config.Config;
 import org.eclipse.jetty.server.Server;
 
 /**
@@ -12,7 +13,7 @@ public class RunJettyServer {
     /**
      * 相关启动参数
      */
-    private static final int PORT = 9394;//应用端口
+    private static final int PORT =Integer.parseInt( Config.getInstance().getValue("PORT") ) ;//应用端口
     private static final String CONTEXT = "/basic";//上下文名称
 
     public static void main(String[] args) throws Exception {

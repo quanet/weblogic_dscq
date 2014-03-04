@@ -82,8 +82,8 @@ public class TaskHandler {
      */
     public static void  changeBat() throws Exception {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
-                .getContextClassLoader().getResource("").getPath()+"project.ini");
-        for(int i = 0 ;i<listStr.size();i++){
+                .getContextClassLoader().getResource("").getPath()+"config.properties");
+        for(int i = 1 ;i<listStr.size();i++){
             FileModify.modify(listStr.get(i)+"//bin//startWebLogic.cmd");
             FileModify.modify(listStr.get(i)+"//bin//stopWebLogic.cmd");
         }

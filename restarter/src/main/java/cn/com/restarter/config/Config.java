@@ -21,7 +21,7 @@ public class Config {
         properties = new Properties();
         InputStream is = null;
         try {
-            is = Config.class.getResourceAsStream("/config/config.properties");
+            is = Config.class.getResourceAsStream("/config.properties");
             properties.load(is);
         } catch (Exception exception) {
             System.out.println("Can't read the properties file. ");
