@@ -31,7 +31,7 @@
     <!-- .上下文启动的时候，自动处理 -->
     <bean id="springCronJob" class="cn.com.scheduler.job.ServerCronJob" lazy-init="false">
         <!-- property name="cronExpression" value="0 0/5 9-17 * * MON-FRI"/ -->
-        <property name="cronExpression" value="0 0/2 * * * ?"/>
+        <property name="cronExpression" value="0 0/5 * * * ?"/>
         <property name="shutdownTimeout" value="20" />
     </bean>
 

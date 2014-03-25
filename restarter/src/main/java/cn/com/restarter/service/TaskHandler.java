@@ -63,7 +63,7 @@ public class TaskHandler {
     public static void restart() throws Exception {
         logger.info("重启weblogic应用");
         execCommand("shutdown.bat");
-        Thread.sleep(10000);
+        Thread.sleep(20000);
         execCommand("startup.bat");
     }
 
@@ -73,7 +73,7 @@ public class TaskHandler {
     public static void restart_sd() throws Exception {
         logger.info("手动重启weblogic应用");
         execCommand("shutdown.bat");
-        Thread.sleep(10000);
+        Thread.sleep(20000);
         execCommand("startup.bat");
     }
 
