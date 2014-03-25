@@ -5,10 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +27,8 @@ public class TaskHandler {
             command = filePath + command;
 
             //运行程序
-            Runtime.getRuntime().exec(new String[]{command, g});
+            Process process = Runtime.getRuntime().exec(new String[]{command, g});
+            process.waitFor();
         } catch (Exception e) {
             System.out.println("error Message:" + e.getMessage());
             e.printStackTrace();
@@ -63,7 +61,7 @@ public class TaskHandler {
     public static void restart() throws Exception {
         logger.info("重启weblogic应用");
         execCommand("shutdown.bat");
-        Thread.sleep(20000);
+        Thread.sleep(30000);
         execCommand("startup.bat");
     }
 
@@ -73,7 +71,7 @@ public class TaskHandler {
     public static void restart_sd() throws Exception {
         logger.info("手动重启weblogic应用");
         execCommand("shutdown.bat");
-        Thread.sleep(20000);
+        Thread.sleep(30000);
         execCommand("startup.bat");
     }
 
