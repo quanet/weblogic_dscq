@@ -15,7 +15,7 @@ public class Config {
 
     private static Config cfg = null;
 
-    private final static String ERR_MSG = "从配置文件中不能取得传入参数的返回值：";
+    private final static String ERR_MSG = "浠庨厤缃枃浠朵腑涓嶈兘鍙栧緱浼犲叆鍙傛暟鐨勮繑鍥炲�硷細";
 
     private Config() {
         properties = new Properties();
@@ -54,7 +54,7 @@ public class Config {
             return null;
         String value = properties.getProperty(key);
         if (value == null) {
-            System.out.println("未能在配置文件中找到" + key + "的值或为空！");
+            System.out.println(ERR_MSG + key );
         }
 
         return value;
