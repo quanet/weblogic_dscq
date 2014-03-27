@@ -62,9 +62,7 @@ public class FileModify {
         }
     }
 
-    /**
-     * ������
-     */
+
     public static void modify(String filePath) {
         FileModify obj = new FileModify();
         obj.write(filePath, obj.read(filePath));
