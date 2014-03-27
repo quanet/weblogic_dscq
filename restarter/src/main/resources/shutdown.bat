@@ -5,5 +5,6 @@
    for /f "tokens=1,2 delims=^=" %%a in (%CONFIG_FILE%) do (
        if /I not "%%a"=="PORT" (
     start %%b\bin\stopWebLogic.cmd
+       echo  start %%b//bin//stopWebLogic.cmd
             )
             )

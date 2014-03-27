@@ -19,6 +19,9 @@ public class TaskHandler {
 
     public static String execCommand(String command) {
         String errorMSG = "";
+        Process process;
+        List list=new ArrayList();
+        String line = null;
         try {
             //批处理文件路径
             String filePath = Thread.currentThread()
@@ -27,8 +30,22 @@ public class TaskHandler {
             command = filePath + command;
 
             //运行程序
-            Process process = Runtime.getRuntime().exec(new String[]{command, g});
-            process.waitFor();
+//            Process process = Runtime.getRuntime().exec(new String[]{command, g});
+//            process.waitFor();
+            //执行命令
+            process = Runtime.getRuntime().exec(new String[]{command, g});
+            //取得命令结果的输出流
+            InputStream fis = process.getInputStream();
+            //用一个读输出流类去读
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            //int c;
+            //逐行读取输出到控制台
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+            if(process.waitFor()!=0){
+                logger.info(command+"执行失败！");
+            }
         } catch (Exception e) {
             System.out.println("error Message:" + e.getMessage());
             e.printStackTrace();
