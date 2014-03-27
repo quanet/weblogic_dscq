@@ -29,6 +29,8 @@ public class TaskHandler {
             String g = "";
             command = filePath + command;
 
+            logger.info("bat路径:"+command);
+
             //运行程序
 //            Process process = Runtime.getRuntime().exec(new String[]{command, g});
 //            process.waitFor();
@@ -60,6 +62,7 @@ public class TaskHandler {
     public void start() {
         logger.info("启动weblogic应用");
         execCommand("startup.bat");
+        logger.info("weblogic应用启动成功");
     }
 
 
@@ -69,6 +72,7 @@ public class TaskHandler {
     public void stop() {
         logger.info("停止weblogic应用");
         execCommand("shutdown.bat");
+        logger.info("weblogic应用停止成功");
     }
 
 
@@ -76,10 +80,12 @@ public class TaskHandler {
      * 重启
      */
     public static void restart() throws Exception {
-        logger.info("重启weblogic应用");
+        logger.info("自动重启weblogic应用");
         execCommand("shutdown.bat");
+        logger.info("自动weblogic应用停止成功");
         Thread.sleep(30000);
         execCommand("startup.bat");
+        logger.info("自动weblogic应用启动成功");
     }
 
     /**
@@ -88,8 +94,10 @@ public class TaskHandler {
     public static void restart_sd() throws Exception {
         logger.info("手动重启weblogic应用");
         execCommand("shutdown.bat");
+        logger.info("手动weblogic应用停止成功");
         Thread.sleep(30000);
         execCommand("startup.bat");
+        logger.info("手动weblogic应用启动成功");
     }
 
     /**
