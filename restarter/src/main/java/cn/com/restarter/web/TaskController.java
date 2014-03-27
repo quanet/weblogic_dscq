@@ -5,6 +5,8 @@ import cn.com.restarter.util.FileModify;
 import cn.com.restarter.util.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,11 +38,11 @@ public class TaskController {
      *
      * @return
      */
-    @RequestMapping("/restart.action")
+    @RequestMapping(value = "/restart.action", method = RequestMethod.POST)
+    @ResponseBody
     public String restart() throws Exception {
         TaskHandler.restart_sd();
-        return "/restartWeblogic.jsp?type=1";
-
+        return "success";
     }
 
     /**
