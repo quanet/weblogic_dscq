@@ -35,10 +35,8 @@
                 cache: false,
                 dataType:'json',
                 success: function(data){
-                 alert("成功");
                 },
                 error:function(){
-                    alert("失败");
                 }
             });
         }
