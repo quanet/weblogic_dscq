@@ -16,8 +16,8 @@
     }
 %>
 <input name="restart" id="restart" type="button" value="重启" onclick="restart();">
-<input name="restart" id="restart" type="button" value="下载本应用日志文件" onclick="downloadlog();">
-<input name="restart" id="restart" type="button" value="下载所配置应用日志文件" onclick="downloadlog1();">
+<input name="downloadlog" id="downloadlog" type="button" value="下载本应用日志文件" onclick="downloadlog();">
+<input name="downloadlog1" id="downloadlog1" type="button" value="下载所配置应用日志文件" onclick="downloadlog1();">
 </body>
 <script>
     function restart() {
