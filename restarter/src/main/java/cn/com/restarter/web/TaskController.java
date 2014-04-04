@@ -30,7 +30,6 @@ public class TaskController {
     public String index() {
         System.out.println("--------------------------正在进入前台");
         return "/index.jsp";
-
     }
 
     /**
@@ -46,6 +45,18 @@ public class TaskController {
     }
 
     /**
+     * .点击重启按钮触发方法--重启单个
+     *
+     * @return
+     */
+    @RequestMapping(value = "/restartOne.action", method = RequestMethod.POST)
+    @ResponseBody
+    public String restartOne(String url) throws Exception {
+        TaskHandler.restart_sd_One(url);
+        return "success";
+    }
+
+    /**
      * 下载本应用日志
      *
      * @return
@@ -53,7 +64,7 @@ public class TaskController {
     @RequestMapping("/downloadlog.action")
     public String downloadlog(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String url = "C:/restartlog";
-        FileUtils.downLoadFilesByUrl(request, response, url,"restarter.zip");
+        FileUtils.downLoadFilesByUrl(request, response, url, "restarter.zip");
         return null;
     }
 
@@ -62,12 +73,12 @@ public class TaskController {
      *
      * @return
      */
-    @RequestMapping("/downloadlog1.action")
+    @RequestMapping("/downloadlogALL.action")
     public void downloadlog1(HttpServletRequest request, HttpServletResponse response, int count) throws Exception {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
                 .getContextClassLoader().getResource("").getPath() + "config.properties");
         String url[] = listStr.get(count).split("//");
-        FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "\\servers\\AdminServer\\logs",url[url.length-1]+".zip");
+        FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "\\servers\\AdminServer\\logs", url[url.length - 1] + ".zip");
     }
 
     //获取项目数量+1
@@ -75,5 +86,20 @@ public class TaskController {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
                 .getContextClassLoader().getResource("").getPath() + "config.properties");
         return listStr.size();
+    }
+
+
+    /**
+     * 获取项目weblogic部署地址
+     *
+     * @return
+     */
+    @RequestMapping(value = "/restartWeblogic.action")
+    public String restartWeblogic(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
+                .getContextClassLoader().getResource("").getPath() + "config.properties");
+        listStr.remove(0);
+        request.setAttribute("weblogiclist",listStr);
+        return "/restartWeblogic.jsp";
     }
 }

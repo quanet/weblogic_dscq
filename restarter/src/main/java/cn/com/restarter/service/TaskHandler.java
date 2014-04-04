@@ -42,9 +42,9 @@ public class TaskHandler {
             BufferedReader br = new BufferedReader(new InputStreamReader(fis));
             //int c;
             //逐行读取输出到控制台
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-            }
+//            while ((line = br.readLine()) != null) {
+//                System.out.println(line);
+//            }
             if(process.waitFor()!=0){
                 logger.info(command+"执行失败！");
             }
@@ -53,6 +53,29 @@ public class TaskHandler {
             e.printStackTrace();
         } finally {
             return errorMSG;
+        }
+    }
+    public static void creatBat(String command,String type){
+        FileWriter fw=null;
+        try {
+            String filePath = Thread.currentThread()
+                    .getContextClassLoader().getResource("").getPath();
+            fw=new FileWriter(filePath+type);
+            fw.write(command);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.exit(0);
+        }finally{
+            if(fw!=null){
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                    System.exit(0);
+                }
+            }
         }
     }
 
@@ -98,6 +121,27 @@ public class TaskHandler {
         Thread.sleep(30000);
         execCommand("startup.bat");
         logger.info("手动weblogic应用启动成功");
+    }
+
+    /**
+     * 手动重启--单个
+     */
+    public static void restart_sd_One(String url) throws Exception {
+        logger.info("手动重启weblogic应用");
+        String commandstop = "@ECHO OFF\n" +
+                "  SET ROOT=%~dp0\n" +
+                "    start "+url+"//bin//stopWebLogic.cmd";
+        creatBat(commandstop,"shutdownOne.bat");
+        String commandstartup = "@ECHO OFF\n" +
+                "  SET ROOT=%~dp0\n" +
+                "    start "+url+"//startWebLogic.cmd";
+        creatBat(commandstartup,"startupOne.bat");
+        logger.info("手动重启weblogic应用(单个):"+url);
+        execCommand("shutdownOne.bat");
+        logger.info("手动weblogic应用停止成功(单个):"+url);
+        Thread.sleep(30000);
+        execCommand("startupOne.bat");
+        logger.info("手动weblogic应用启动成功(单个):"+url);
     }
 
     /**

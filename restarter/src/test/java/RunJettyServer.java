@@ -25,7 +25,8 @@ public class RunJettyServer {
             //当控制台中输入回车的时候,应用重启
 
             server.start();
-            System.out.println("application start success!url: http://localhost:" + PORT + CONTEXT+"/restartWeblogic.jsp");
+            System.out.println("application start success!");
+            System.out.println("url: http://localhost:" + PORT + CONTEXT+"/web/task/restartWeblogic.action");
             System.out.println("press enter will restart this application!");
 
             while(true) {
