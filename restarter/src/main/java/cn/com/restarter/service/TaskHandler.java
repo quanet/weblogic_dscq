@@ -129,11 +129,9 @@ public class TaskHandler {
     public static void restart_sd_One(String url) throws Exception {
         logger.info("手动重启weblogic应用");
         String commandstop = "@ECHO OFF\n" +
-                "  SET ROOT=%~dp0\n" +
                 "    start "+url+"//bin//stopWebLogic.cmd";
         creatBat(commandstop,"shutdownOne.bat");
         String commandstartup = "@ECHO OFF\n" +
-                "  SET ROOT=%~dp0\n" +
                 "    start "+url+"//startWebLogic.cmd";
         creatBat(commandstartup,"startupOne.bat");
         logger.info("手动重启weblogic应用(单个):"+url);
