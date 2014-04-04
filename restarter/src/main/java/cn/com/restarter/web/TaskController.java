@@ -78,7 +78,7 @@ public class TaskController {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
                 .getContextClassLoader().getResource("").getPath() + "config.properties");
         String url[] = listStr.get(count).split("//");
-        FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "\\servers\\AdminServer\\logs", url[url.length - 1] + ".zip");
+        FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "//servers//AdminServer//logs", url[url.length - 1] + ".zip");
     }
 
     /**
@@ -101,7 +101,7 @@ public class TaskController {
 
 
     /**
-     * 获取项目weblogic部署地址
+     * 获取项目部署地址，跳转到主页
      *
      * @return
      */
