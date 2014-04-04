@@ -74,11 +74,22 @@ public class TaskController {
      * @return
      */
     @RequestMapping("/downloadlogALL.action")
-    public void downloadlog1(HttpServletRequest request, HttpServletResponse response, int count) throws Exception {
+    public void downloadlogALL(HttpServletRequest request, HttpServletResponse response, int count) throws Exception {
         List<String> listStr = FileModify.readFileByLines(Thread.currentThread()
                 .getContextClassLoader().getResource("").getPath() + "config.properties");
         String url[] = listStr.get(count).split("//");
         FileUtils.downLoadFilesByUrl(request, response, listStr.get(count) + "\\servers\\AdminServer\\logs", url[url.length - 1] + ".zip");
+    }
+
+    /**
+     * 下载单个应用日志
+     *
+     * @return
+     */
+    @RequestMapping("/downloadlogOne.action")
+    public void downloadlogOne(HttpServletRequest request, HttpServletResponse response,String url) throws Exception {
+        String urls[] = url.split("//");
+        FileUtils.downLoadFilesByUrl(request, response,url + "//servers//AdminServer//logs", urls[urls.length - 1] + ".zip");
     }
 
     //获取项目数量+1

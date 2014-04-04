@@ -84,7 +84,8 @@
     }
     //下载一个应用的日志
     function downloadlogOne(url) {
-        alert(url);
+        window.location.href = "/basic/web/task/downloadlogOne.action?url="+url;
+
     }
 </script>
 </html>
