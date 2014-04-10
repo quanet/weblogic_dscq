@@ -26,6 +26,9 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <mvc:view-controller path="/" view-name="redirect:/task/restartWeblogic.action" ></mvc:view-controller>
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
     <!-- 定义JSP文件的位置 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value=""/>

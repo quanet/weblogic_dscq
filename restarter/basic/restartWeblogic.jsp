@@ -40,7 +40,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/basic/web/task/restart.action",
+                url: "/basic/task/restart.action",
                 async: true,
                 cache: false,
                 dataType: 'json',
@@ -53,7 +53,7 @@
     }
 
     function downloadlog() {
-        window.location.href = "/basic/web/task/downloadlog.action";
+        window.location.href = "/basic/task/downloadlog.action";
     }
 
     function downloadlogALL() {
@@ -62,7 +62,7 @@
             alert("还没有配置任何应用，请配置！");
         } else {
             for (var i = 1; i < count; i++) {
-                window.open("/basic/web/task/downloadlogALL.action?count=" + i);
+                window.open("/basic/task/downloadlogALL.action?count=" + i);
             }
         }
     }
@@ -71,7 +71,7 @@
         alert("重启成功，请勿多次点击！！");
         $.ajax({
             type: "POST",
-            url: "/basic/web/task/restartOne.action",
+            url: "/basic/task/restartOne.action",
             data: {'url':url },
             async: true,
             cache: false,
@@ -84,7 +84,7 @@
     }
     //下载一个应用的日志
     function downloadlogOne(url) {
-        window.location.href = "/basic/web/task/downloadlogOne.action?url="+url;
+        window.location.href = "/basic/task/downloadlogOne.action?url="+url;
 
     }
 </script>

@@ -2,6 +2,9 @@ import cn.com.jetty.JettyFactory;
 import cn.com.restarter.config.Config;
 import org.eclipse.jetty.server.Server;
 
+import java.awt.*;
+import java.net.URI;
+
 /**
  * @author : lihaoquan
  *
@@ -26,9 +29,9 @@ public class RunJettyServer {
 
             server.start();
             System.out.println("application start success!");
-            System.out.println("url: http://localhost:" + PORT + CONTEXT+"/web/task/restartWeblogic.action");
+            System.out.println("访问地址: http://localhost:" + PORT + CONTEXT);
             System.out.println("press enter will restart this application!");
-
+            Desktop.getDesktop().browse(new URI("http://localhost:"+ PORT + CONTEXT));
             while(true) {
                 char c = (char) System.in.read();
                 if(c=='\n') {

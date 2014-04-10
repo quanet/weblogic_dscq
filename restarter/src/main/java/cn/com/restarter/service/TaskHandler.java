@@ -52,6 +52,7 @@ public class TaskHandler {
             System.out.println("error Message:" + e.getMessage());
             e.printStackTrace();
         } finally {
+            logger.info("bat执行完毕！");
             return errorMSG;
         }
     }
@@ -106,7 +107,7 @@ public class TaskHandler {
         logger.info("自动重启weblogic应用");
         execCommand("shutdown.bat");
         logger.info("自动weblogic应用停止成功");
-        Thread.sleep(30000);
+        Thread.sleep(60000);
         execCommand("startup.bat");
         logger.info("自动weblogic应用启动成功");
     }
@@ -115,12 +116,12 @@ public class TaskHandler {
      * 手动重启
      */
     public static void restart_sd() throws Exception {
-        logger.info("手动重启weblogic应用");
+        logger.info("手动重启全部weblogic应用");
         execCommand("shutdown.bat");
-        logger.info("手动weblogic应用停止成功");
-        Thread.sleep(30000);
+        logger.info("手动重启全部weblogic应用停止成功");
+        Thread.sleep(60000);
         execCommand("startup.bat");
-        logger.info("手动weblogic应用启动成功");
+        logger.info("手动重启全部weblogic应用启动成功");
     }
 
     /**
@@ -137,7 +138,7 @@ public class TaskHandler {
         logger.info("手动重启weblogic应用(单个):"+url);
         execCommand("shutdownOne.bat");
         logger.info("手动weblogic应用停止成功(单个):"+url);
-        Thread.sleep(30000);
+        Thread.sleep(60000);
         execCommand("startupOne.bat");
         logger.info("手动weblogic应用启动成功(单个):"+url);
     }
